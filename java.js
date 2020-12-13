@@ -1,6 +1,6 @@
 $(document).ready(function(){
     var events = [];
-
+//function that listens for click on save icon
     $(".saveBtn").on("click", function(){
 
         var value = $(this).siblings(".description").val();
@@ -13,7 +13,7 @@ $(document).ready(function(){
     });
 
 function timeUpdater(){
-
+//gets current time and keeps time updated
     var currentHour = moment().hour();
 
     $("time-block").each(function(){
@@ -50,6 +50,7 @@ function setTime() {
     }, 1000);
 }
 setTime();
+    //blank schedule on a new day
 
 var currentDay = moment().format("dddd, MMMM Do");
 for(var i = 0; i < events.length; i++){
@@ -60,6 +61,7 @@ for(var i = 0; i < events.length; i++){
         events.length = 0;
     } 
 }
+    //saved descriptions
 var storedEvents = JSON.parse(localStorage.getItem("events"));
 
 if( storedEvents !== null){
@@ -70,6 +72,6 @@ for(var i = 0; i < events.length; i++) {
     var userDescription = events[i].description;
     $("#" + events[i].time).children(".description").text(userDescription);
 }
-
+//shows the current date
 
 });$("#currentDay").text(moment().format("dddd, MMMM Do"));
